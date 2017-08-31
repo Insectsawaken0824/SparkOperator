@@ -2,8 +2,7 @@ package scala.core
 
 import org.apache.spark.rdd.RDD
 import org.apache.spark.sql.SparkSession
-import org.apache.spark.util.{DoubleAccumulator, LongAccumulator}
-import org.apache.spark.{SparkConf, SparkContext}
+import org.apache.spark.util.LongAccumulator
 
 /**
   * 累加器
