@@ -12,7 +12,7 @@ import org.apache.spark.{SparkConf, SparkContext}
 object AccumulatorDemo {
   def main(args: Array[String]): Unit = {
     val ss: SparkSession = SparkSession.builder().appName("AccumulatorDemo").master("local").getOrCreate()
-    val fileRdd: RDD[String] = ss.sparkContext.textFile("E:\\project\\SparkOperator\\src\\main\\resources/name.txt")
+    val fileRdd: RDD[String] = ss.sparkContext.textFile(AccumulatorDemo.getClass.getClassLoader.getResource("name.txt").getPath)
     val accumulator: LongAccumulator = ss.sparkContext.longAccumulator
     val count: Long = fileRdd.flatMap(_.split(" ")).map( x => accumulator.add(1)).count()
     println(count)
